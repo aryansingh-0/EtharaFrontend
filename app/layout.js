@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Team Task Manager | Operation Center",
-  description: "Manage projects and tasks with AI-powered intelligence.",
+  description: "Manage projects.",
 };
 
 export default function RootLayout({ children }) {
