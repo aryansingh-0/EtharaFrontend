@@ -20,6 +20,10 @@ export default function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
     const tid = toast.loading('Sending verification email...');
     try {
       const data = await fetchWithAuth('/auth/signup', {
@@ -106,6 +110,7 @@ export default function Register() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  minLength={6}
                   placeholder="••••••••"
                   className="w-full pl-12 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-600 text-gray-100"
                 />

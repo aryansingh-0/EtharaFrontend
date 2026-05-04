@@ -11,6 +11,10 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
     const toastId = toast.loading('Logging in...');
     try {
       const data = await fetchWithAuth('/auth/login', {
@@ -56,6 +60,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={6}
               className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-500 text-gray-100"
               placeholder="••••••••"
             />
